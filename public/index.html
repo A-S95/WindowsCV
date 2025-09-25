@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>CV AS</title>
+</head>
+<body>
+
+  <div class="window">
+    <!-- Barra superior -->
+    <div class="titlebar">
+      <span>Curriculum Explorer</span>
+      <div class="buttons">
+        <button>–</button>
+        <button>☐</button>
+        <button class="close" onclick="showConfirmationWindow()">✕</button>
+      </div>
+    </div>
+
+    <!-- Estrutura principal -->
+    <div class="container">
+      <div class="modal-overlay hidden" id="personalization-window">
+      <div class="window modal-window">
+        <div class="titlebar">
+          <span>Personalization</span>
+          <div class="buttons">
+            <button class="close" onclick="closePersonalizationWindow()">✕</button>
+          </div>
+        </div>
+        <div class="modal-content">
+          <h3>Choose your theme</h3>
+          <div class="theme-options">
+            <button onclick="setThemeAndClose('light')">Light Mode</button>
+            <button onclick="setThemeAndClose('dark')">Dark Mode</button>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="sidebar">
+      <div class="item active" onclick="showSection('about', this)">📂 About me</div>
+      <div class="item" onclick="showSection('experience', this)">📂 Experience</div>
+      <div class="item" onclick="showSection('education', this)">📂 Education</div>
+      <div class="item" onclick="showSection('skills', this)">📂 Skills</div>
+      
+      <div class="item" onclick="showPersonalizationWindow()"><i class="fas fa-cog"></i> Personalize</div>
+      <div class="item turn-off-btn" onclick="showConfirmationWindow()"><i class="fas fa-power-off"></i> Turn off</div>
+    </div>
+
+
+
+
+
+    <div class="content" id="content">
+        <h2>António Santos</h2>
+        <p>Desenvolvedor Junior</p>
+        <ul class="wrapper">
+            <li class="icon linkedin">
+              <a href="https://www.linkedin.com/in/as-software/" target="_blank">
+                <span class="tooltip">Linkedin</span>
+                <span><i class="fab fa-linkedin"></i></span>
+              </a>
+            </li>
+            <li class="icon github">
+              <a href="https://github.com/A-S95" target="_blank">
+                <span class="tooltip">Github</span>
+                <span><i class="fab fa-github"></i></span>
+              </a>
+            </li>
+            <li class="icon portfolio">
+              <a href="https://portfolio-as-azure.vercel.app/" target="_blank">
+                <span class="tooltip">Portfolio</span>
+                <span><i class="fa-solid fa-briefcase"></i></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+    </div>
+
+        <div id="spotify-widget"></div>
+    
+    <!-- Barra inferior -->
+    <div class="statusbar" id="status">Ready</div>
+  </div>
+
+<script src="main.js"></script>
+
+    <div class="modal-overlay hidden" id="confirmation-window">
+      <div class="window modal-window">
+        <div class="titlebar">
+          <span>Confirmação</span>
+        </div>
+        <div class="modal-content">
+          <p>Are you sure you want to close the application?</p>
+          <div class="modal-buttons">
+            <button onclick="confirmTurnOff()">Yes</button>
+            <button onclick="closeConfirmationWindow()">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+</body>
+</html>

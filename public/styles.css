@@ -1,0 +1,753 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+
+/* Animação para o efeito de "Desligar" a página */
+.window.turning-off {
+  animation: turn-off-animation 5s forwards;
+}
+
+@keyframes turn-off-animation {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+}
+
+/* Estilos específicos para a janela de Confirmação */
+#confirmation-window .modal-window {
+    width: 350px;
+    min-height: 100px;
+    max-height: 20vh;
+}
+
+#confirmation-window .modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+
+#confirmation-window .modal-content p {
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+#confirmation-window .modal-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+#confirmation-window .modal-buttons button {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #555;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#confirmation-window .modal-buttons button:hover {
+    background-color: #777;
+}
+
+#confirmation-window .modal-buttons button:last-child {
+    background-color: #dc3545;
+}
+
+#confirmation-window .modal-buttons button:last-child:hover {
+    background-color: #c82333;
+}
+
+
+/* Estilos para o overlay modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+
+.modal-overlay.hidden {
+  display: none;
+  opacity: 0;
+}
+
+.modal-window {
+  width: 50px; /* Reduzimos para 200px para ficar menor */
+  height: auto;
+  min-height: 150px;
+  max-height: 20vh;
+  max-width: 500px;
+  padding: 0;
+  border-radius: 6px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  animation: modal-fade-in 0.3s ease-out;
+}
+
+/* Deixa a janela de personalização responsiva em telemóveis */
+@media (max-width: 480px) {
+  .modal-window {
+    width: 90%; /* Ajusta para 90% da largura do ecrã */
+  }
+}
+@keyframes modal-fade-in {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.modal-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.theme-options {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.theme-options button {
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #f0f0f0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-options button:hover {
+  background: #e0e0e0;
+}
+
+/* Ajustes de estilo para o modo escuro */
+body.dark-mode .modal-window {
+  background: #1e1e1e;
+  border-color: #444;
+}
+
+body.dark-mode .modal-content h3 {
+  color: #e0e0e0;
+}
+
+body.dark-mode .theme-options button {
+  background: #333;
+  color: #e0e0e0;
+  border-color: #555;
+}
+
+body.dark-mode .theme-options button:hover {
+  background: #444;
+}
+
+
+
+/* --- Dark Mode Styles --- */
+body.dark-mode {
+  background: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode .window {
+  background: #1e1e1e;
+  border-color: #444;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode .titlebar {
+  background: #333;
+  color: #fff;
+}
+
+body.dark-mode .titlebar .buttons button {
+  background: #555;
+  color: #ccc;
+}
+
+body.dark-mode .titlebar .buttons button.close {
+  background: #a93232;
+}
+
+body.dark-mode .sidebar {
+  background: #222;
+  border-right-color: #444;
+}
+
+body.dark-mode .sidebar .item {
+  color: #ccc;
+}
+
+body.dark-mode .sidebar .item:hover {
+  background: #333;
+}
+
+body.dark-mode .sidebar .item.active {
+  background: #444;
+  color: #fff;
+}
+
+body.dark-mode .content {
+  color: #e0e0e0;
+}
+
+body.dark-mode .experience-header {
+  color: #fff;
+}
+
+body.dark-mode .experience-header:hover {
+  color: #61afef;
+}
+
+body.dark-mode .job-entry {
+  border-left-color: #61afef;
+}
+
+body.dark-mode .job-entry h4 {
+  color: #fff;
+}
+
+body.dark-mode .statusbar {
+  background: #333;
+  color: #ccc;
+}
+
+/* Adjust social icons for dark mode */
+body.dark-mode .wrapper .icon {
+  background: #ffffff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+  
+}
+
+body.dark-mode .wrapper .icon span i {
+  color: #000000;
+}
+
+body.dark-mode .wrapper .tooltip {
+  background: #333;
+  color: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .wrapper .tooltip::before {
+  background: #333;
+}
+
+
+body.dark-mode .wrapper .icon:hover .tooltip {
+  top: -45px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+body.dark-mode .wrapper .icon:hover span,
+body.dark-mode .wrapper .icon:hover .tooltip {
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .wrapper .portfolio:hover,
+body.dark-mode .wrapper .portfolio:hover .tooltip,
+body.dark-mode .wrapper .portfolio:hover .tooltip::before {
+  background: #E4405F;
+  color: #ffffff;
+}
+
+body.dark-mode .wrapper .github:hover,
+body.dark-mode .wrapper .github:hover .tooltip,
+body.dark-mode .wrapper .github:hover .tooltip::before {
+  background: #333333;
+  color: #ffffff;
+}
+
+body.dark-mode .wrapper .linkedin:hover,
+body.dark-mode .wrapper .linkedin:hover .tooltip,
+body.dark-mode .wrapper .linkedin:hover .tooltip::before {
+  background: #1f87cd;
+  color: #ffffff;
+}
+
+/* Social Icons */
+.wrapper {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+.wrapper .icon a:visited span i {
+  color: black;
+}
+
+.wrapper .icon span i {
+  color: black;
+}
+
+.wrapper .icon {
+  position: relative;
+  background: #ffffff;
+  border-radius: 50%;
+  padding: 15px;
+  margin: 10px;
+  width: 50px;
+  height: 50px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .tooltip {
+  position: absolute;
+  top: 0;
+  font-size: 14px;
+  background: #ffffff;
+  color: #ffffff;
+  padding: 5px 8px;
+  border-radius: 5px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .tooltip::before {
+  position: absolute;
+  content: "";
+  height: 8px;
+  width: 8px;
+  background: #ffffff;
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .icon:hover .tooltip {
+  top: -45px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.wrapper .icon:hover span,
+.wrapper .icon:hover .tooltip {
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper .portfolio:hover,
+.wrapper .portfolio:hover .tooltip,
+.wrapper .portfolio:hover .tooltip::before {
+  background: #E4405F;
+  color: #ffffff;
+}
+
+.wrapper .github:hover,
+.wrapper .github:hover .tooltip,
+.wrapper .github:hover .tooltip::before {
+  background: #333333;
+  color: #ffffff;
+}
+
+.wrapper .linkedin:hover,
+.wrapper .linkedin:hover .tooltip,
+.wrapper .linkedin:hover .tooltip::before {
+  background: #1f87cd;
+  color: #ffffff;
+}
+
+
+body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: #1e293b;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: jetbrains mono, monospace;
+    }
+
+    .window {
+      width: 90%;
+      height: 90%;
+      background: #f9fafb;
+      border: 1px solid #9ca3af;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    /* Barra estilo Windows */
+    .titlebar {
+      background: #2563eb;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 12px;
+      font-size: 14px;
+    }
+    .titlebar .buttons {
+      display: flex;
+      gap: 4px;
+    }
+    .titlebar .buttons button {
+      border: none;
+      background: #3b82f6;
+      color: white;
+      padding: 2px 8px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .titlebar .buttons button.close {
+      background: #dc2626;
+    }
+
+    /* Estrutura */
+    .container {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+
+    .sidebar {
+      width: 220px;
+      background: #f3f4f6;
+      border-right: 1px solid #d1d5db;
+      overflow-y: auto;
+    }
+
+    .sidebar .item {
+      padding: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+
+    .sidebar .item:hover {
+      background: #e5e7eb;
+    }
+
+    .sidebar .item.active {
+      background: #dbeafe;
+      font-weight: bold;
+    }
+
+    .content {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      animation: fadein 0.3s ease;
+    }
+
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .statusbar {
+      background: #e5e7eb;
+      padding: 6px 12px;
+      font-size: 13px;
+      color: #374151;
+    }
+
+    /* Ícones fake de pastas */
+    .icon {
+      font-size: 16px;
+    }
+
+    /* Grid de “ficheiros” */
+    .files {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .file {
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .file img {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 6px;
+    }
+
+    .file span {
+      font-size: 13px;
+      color: #374151;
+    }
+
+    .file:hover span {
+      font-weight: bold;
+    }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+      .window {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+      }
+      .sidebar {
+        width: 140px;
+      }
+    }
+
+
+/* --- Experience Section Styling --- */
+.experience-section {
+    margin-bottom: 20px;
+}
+
+.experience-header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    transition: color 0.3s ease;
+    user-select: none; /* Impede a seleção do texto */
+}
+
+.experience-header:hover {
+    color: #2563eb;
+}
+
+.chevron-icon {
+    margin-right: 10px;
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+}
+
+.experience-content {
+    max-height: 0;
+    overflow: hidden;
+    padding-left: 30px; /* Alinhamento com o texto */
+    transition: max-height 0.5s ease-out;
+}
+
+.job-entry {
+    border-left: 2px solid #2563eb;
+    padding-left: 15px;
+    margin-top: 15px;
+}
+
+.job-entry h4 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #1e293b;
+}
+
+.job-entry p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+.job-entry ul {
+    margin: 10px 0 0 0;
+    padding-left: 20px;
+}
+/* Adicione um media query para que em telas menores, o layout volte a ser vertical */
+@media (max-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+}
+
+/* Spotify Widget - Estado "A Tocar" */
+#spotify-widget {
+    position: fixed;
+    bottom: 20px;
+    left: 15px;
+    width: 170px;
+    height: 170px;
+    color: white;
+    font-family: Arial, sans-serif;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 10px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    z-index: 1000;
+}
+
+/* Camada para o texto quando a tocar */
+#spotify-widget::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+}
+
+/* Regras para o estado "Offline" */
+#spotify-widget.offline {
+    width: auto;
+    height: auto;
+    background: #373737;
+    padding: 15px;
+    margin-left: 15%;
+    margin-right: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Esconde a camada escura quando offline */
+#spotify-widget.offline::before {
+    display: none;
+}
+
+.spotify-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.now-playing-text {
+    font-size: 0.8em;
+    color: #1DB954;
+    margin: 0;
+}
+
+.track-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin: 5px 0 0 0;
+}
+
+.artist-name {
+    font-size: 0.9em;
+    color: #ccc;
+    margin: 0;
+}
+
+.offline-text {
+    font-style: italic;
+    color: #003cff;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    white-space: nowrap; /* Impede a quebra de linha do texto offline */
+}
+
+/* --- Responsive improvements --- */
+
+/* Adjustments for tablets and medium-sized phones (up to 768px) */
+@media (max-width: 768px) {
+  .window {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+  .sidebar {
+    width: 140px;
+  }
+  .content {
+    padding: 15px;
+  }
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+  #spotify-widget {
+    width: 100px;
+    height: 130px;
+    bottom: 15px;
+    left: 10px;
+  }
+  .track-title {
+    font-size: 1em;
+  }
+  .artist-name {
+    font-size: 0.8em;
+  }
+}
+
+/* Adjustments for small phones (up to 480px) */
+@media (max-width: 480px) {
+  .titlebar {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+  .sidebar {
+    width: 110px;
+  }
+  .sidebar .item {
+    font-size: 12px;
+    gap: 6px;
+  }
+  .content {
+    padding: 10px;
+    padding-bottom: 150px; /* Adicione esta linha */
+  }
+  .files {
+    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+  .file img {
+    width: 40px;
+    height: 40px;
+  }
+  #spotify-widget {
+    bottom: 10px;
+    left: 20%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 50px;
+    padding: 5px;
+  }
+  .now-playing-text {
+    font-size: 0.7em;
+  }
+  .track-title {
+    font-size: 0.9em;
+  }
+  .artist-name {
+    font-size: 0.7em;
+  }
+  .statusbar {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+}

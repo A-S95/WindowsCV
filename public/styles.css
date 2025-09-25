@@ -88,7 +88,7 @@
 }
 
 .modal-window {
-  width: 50px; /* Reduzimos para 200px para ficar menor */
+  width: 50px; 
   height: auto;
   min-height: 150px;
   max-height: 20vh;
@@ -158,8 +158,6 @@ body.dark-mode .theme-options button {
 body.dark-mode .theme-options button:hover {
   background: #444;
 }
-
-
 
 /* --- Dark Mode Styles --- */
 body.dark-mode {
@@ -386,7 +384,6 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: jetbrains mono, monospace;
     }
 
     .window {
@@ -534,7 +531,7 @@ body {
     display: flex;
     align-items: center;
     cursor: pointer;
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight: bold;
     color: #333;
     transition: color 0.3s ease;
@@ -543,6 +540,71 @@ body {
 
 .experience-header:hover {
     color: #2563eb;
+}
+
+body.dark-mode .experience-content li {
+    color: #ffffff;
+}
+
+body.dark-mode .experience-content h4 {
+    color: #00a2ff;
+}
+
+.education-section h4 {
+    margin: 0;
+    font-size: 1.3em;
+    color: #2645d3;
+}
+
+body.dark-mode .education-section h4 {
+    margin: 0;
+    font-size: 1.3em;
+    color: #00a2ff;
+}
+
+.education-section p {
+    margin: 5px 0;
+    font-size: 1.1em;
+}
+
+.education-section ul {
+    margin: 10px 0 0 0;
+    padding-left: 20px;
+}
+
+.education-section li {
+    margin: 0;
+    font-size: 1em;
+    color: #000000;
+}
+
+body.dark-mode .education-section li {
+    margin: 0;
+    font-size: 1em;
+    color: #ffffff;
+}
+
+
+.about-title {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    color: #111827;
+
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas */
+    gap: 20px; /* Espaçamento entre os itens */
+    margin-top: 30px;
+}
+
+.about-grid h4 {
+  color:#000000
+}
+
+body.dark-mode .about-grid h4 {
+  color:#ffffff
 }
 
 .chevron-icon {
@@ -566,25 +628,139 @@ body {
 
 .job-entry h4 {
     margin: 0;
-    font-size: 1.2em;
-    color: #1e293b;
+    font-size: 1.3em;
+    color: #2645d3;
 }
 
 .job-entry p {
     margin: 5px 0;
-    font-size: 0.9em;
+    font-size: 1.1em;
 }
 
 .job-entry ul {
     margin: 10px 0 0 0;
     padding-left: 20px;
 }
+
+.job-entry ul li {
+    margin-bottom: 5px;
+    font-size: 1em;
+    color: #000000;
+}
+
+
 /* Adicione um media query para que em telas menores, o layout volte a ser vertical */
 @media (max-width: 768px) {
     .about-grid {
       grid-template-columns: 1fr;
     }
 }
+
+
+.about-mine {
+    font-size: 2em;
+    margin-bottom: 5px;
+    color: #111827;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+body.dark-mode .about-mine {
+    font-size: 2em;
+    margin-bottom: 5px;
+    color: rgb(255, 255, 255);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+
+.what {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #2563eb;
+    font-weight: bolder;
+}
+
+body.dark-mode .what {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #0964a1;
+    font-weight: bolder;
+}
+
+
+.location {
+    font-size: 1.0em;
+    margin-bottom: 15px;
+    color: #353535;
+}
+
+body.dark-mode .location {
+    font-size: 1.0em;
+    margin-bottom: 15px;
+    color: #d6d6d6;
+}
+
+.text-what {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    color: #374151;
+}
+
+body.dark-mode .text-what {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    color: #d6d6d6;
+}
+
+/* A animação de digitação */
+.text-now {
+  color: #0964a1;
+  overflow: hidden; /* Garante que o conteúdo não seja revelado antes da animação */
+  border-right: .15em solid #2563eb; /* O cursor da máquina de escrever */
+  white-space: nowrap; /* Mantém o conteúdo numa única linha */
+  margin: 0 auto;
+  letter-spacing: .10em;
+  animation: 
+    typing 6s steps(106, end),
+    blink-caret .75s step-end infinite;
+}
+
+/* A animação de digitação */
+body.dark-mode .text-now {
+  color: #00a2ff;
+  overflow: hidden; /* Garante que o conteúdo não seja revelado antes da animação */
+  border-right: .15em solid #2563eb; /* O cursor da máquina de escrever */
+  white-space: nowrap; /* Mantém o conteúdo numa única linha */
+  margin: 0 auto;
+  letter-spacing: .10em;
+  animation: 
+    typing 6s steps(106, end),
+    blink-caret .75s step-end infinite;
+}
+
+/* O efeito de digitação */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* O efeito do cursor da máquina de escrever */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #2563eb; }
+}
+
+/* --- Ajustes para telas pequenas --- */
+@media (max-width: 600px) {
+  .text-now {
+    white-space: normal; /* Permite que o texto quebre para a próxima linha */
+    border-right: none; /* Remove a borda direita (cursor) para evitar problemas de layout */
+    width: 100%; /* Garante que o contêiner ocupe a largura total */
+    animation: none; /* Desativa a animação em telas pequenas */
+  }
+}
+
+
+
 
 /* Spotify Widget - Estado "A Tocar" */
 #spotify-widget {

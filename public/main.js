@@ -1,13 +1,13 @@
 const sections = {
   about: `
-    <h2>Antonio Santos</h2>
-    <p>Software Developer Junior </p>
-    Santarém, Portugal<br>
-    <p>I am a final-year Software Development student with a strong interest in technology and problem-solving.
+    <h2 class= "about-mine">António Santos</h2>
+    <p class= "what">Software Developer Junior </p>
+    <p class= "location">Santarém, Portugal<br></p>
+    <p class= "text-what">I am a final-year Software Development student with a strong interest in technology and problem-solving.
         Before moving into tech, I worked in Interior Design, specializing in 3D planning and creative project development. This experience gave me a sharp eye for detail
         and the ability to transform ideas into practical solutions.</p>
 
-    <p>Today, I combine creativity with technical skills to build innovative digital solutions, always striving to improve as a developer and deliver meaningful work.</p>
+    <p class= "text-now">Today, I combine creativity with technical skills to build innovative digital solutions, always striving to improve as a developer and deliver meaningful work.</p>
     
     <div class="about-grid">
         <div>
@@ -16,7 +16,7 @@ const sections = {
                 <ul>
                     <li>Reading</li>
                     <li>Playing video games</li>
-                    <li>Dogs</li>
+                    <li>Dog Lover</li>
                 </ul>
             </div>
         </div>
@@ -115,7 +115,7 @@ education: `
       </h3>
       <div id="school1-details" class="experience-content">
         <div class="education-entry">
-          <h4>Software Developer </h4>
+          <h4 class="education-title">Software Developer </h4>
           <p><strong>Lisbon, Portugal</strong></p>
           <p><strong>Period:</strong> 16 July 2023 - 05 September 2026</p>
           <ul>
@@ -271,46 +271,62 @@ function toggleExperienceDetails(id, header) {
     }
 }
 
-// spotify widget
-async function getSpotifyData() {
-    const widget = document.getElementById('spotify-widget');
+// A função de fetch da música pode ser adicionada ao seu ficheiro main.js
+async function fetchSpotifyData() {
+  const spotifyWidget = document.getElementById('spotify-widget');
 
-    try {
-        // Agora, o teu site faz um pedido ao teu próprio servidor
-        const response = await fetch('/api/spotify-data');
-        const data = await response.json();
-
-        // O resto do código é o mesmo, mas agora os dados vêm do teu servidor
-        if (data.recenttracks && data.recenttracks.track[0]['@attr'] && data.recenttracks.track[0]['@attr'].nowplaying === "true") {
-            const track = data.recenttracks.track[0];
-            const artist = track.artist['#text'];
-            const albumArt = track.image[2]['#text'];
-            
-            widget.classList.remove('offline');
-            widget.style.backgroundImage = `url(${albumArt})`;
-            
-            widget.innerHTML = `
-                <div class="spotify-content">
-                    <p class="now-playing-text">Now Playing</p>
-                    <p class="track-title">${track.name}</p>
-                    <p class="artist-name">${artist}</p>
-                </div>
-            `;
-        } else {
-            widget.classList.add('offline');
-            widget.style.backgroundImage = 'none';
-            widget.innerHTML = `<p class="offline-text">Nothing is playing right now at Spotify</p>`;
-        }
-    } catch (error) {
-        console.error('Erro a carregar dados do Spotify:', error);
-        widget.classList.add('offline');
-        widget.style.backgroundImage = 'none';
-        widget.innerHTML = `<p class="offline-text">Error loading data.</p>`;
+  try {
+    const response = await fetch('/api/spotify-data');
+    if (!response.ok) {
+      throw new Error('Erro ao carregar dados do Last.fm.');
     }
+
+    const data = await response.json();
+    const track = data.recenttracks.track[0];
+
+    if (!track) {
+      spotifyWidget.innerHTML = `
+        <div class="spotify-offline">
+          <p>Nenhuma música tocada recentemente.</p>
+        </div>
+      `;
+      return;
+    }
+
+    const albumArt = track.image.find(img => img.size === 'large')['#text'];
+    const trackTitle = track.name;
+    const artistName = track.artist['#text'];
+    const trackUrl = track.url;
+    const isPlaying = track['@attr'] && track['@attr'].nowplaying === 'true';
+
+    spotifyWidget.innerHTML = `
+      <a href="${trackUrl}" target="_blank" class="spotify-widget-link">
+        <div class="album-art-container">
+          <img src="${albumArt}" alt="Album Art" class="album-art">
+          ${isPlaying ? '<div class="playing-indicator"></div>' : ''}
+        </div>
+        <div class="track-info">
+          <p class="track-title">${trackTitle}</p>
+          <p class="artist-name">${artistName}</p>
+        </div>
+      </a>
+    `;
+
+    // Atualiza a cada 30 segundos
+    setTimeout(fetchSpotifyData, 30000);
+
+  } catch (error) {
+    console.error('Erro ao carregar dados do Spotify:', error);
+    spotifyWidget.innerHTML = `
+      <div class="spotify-offline">
+        <p>Não foi possível carregar o widget.</p>
+      </div>
+    `;
+  }
 }
 
-getSpotifyData();
-setInterval(getSpotifyData, 10000); // Atualiza a cada 10 segundos
+// Chama a função quando a página carrega
+document.addEventListener('DOMContentLoaded', fetchSpotifyData);
 
 // --- Funções para o botão de fechar ---
 // Função para mostrar a janela de confirmação de fecho
@@ -359,5 +375,4 @@ function confirmTurnOff() {
             window.top.close();
         }
     }, 5000);
-
 }

@@ -3,12 +3,12 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-const fetch = require('node-fetch').default;
+const fetch = require('node-fetch'); // <-- Esta é a linha corrigida
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Esta linha serve os ficheiros estáticos da pasta "public"
+// Serve os ficheiros estáticos da pasta "public"
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors());
@@ -20,7 +20,6 @@ const LASTFM_API_KEY = process.env.LASTFM_API_KEY;
 app.get('/api/spotify-data', async (req, res) => {
   try {
     if (!LASTFM_USERNAME || !LASTFM_API_KEY) {
-      console.error('Erro: As variáveis de ambiente não foram definidas.');
       return res.status(500).json({ error: 'As variáveis de ambiente não foram definidas.' });
     }
 
@@ -28,7 +27,6 @@ app.get('/api/spotify-data', async (req, res) => {
     const response = await fetch(url);
 
     if (!response.ok) {
-      console.error('Erro ao buscar dados do Last.fm:', response.status, response.statusText);
       throw new Error('Erro ao buscar dados do Last.fm');
     }
     const data = await response.json();
@@ -39,8 +37,6 @@ app.get('/api/spotify-data', async (req, res) => {
   }
 });
 
-// Este bloco inicia o servidor
 app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
-
+  console.log(`Servidor a executar em http://localhost:${port}`);
 });

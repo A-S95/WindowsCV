@@ -4,9 +4,6 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const fetch = require('node-fetch').default;
-const dotenv = require('dotenv');
-
-dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -45,4 +42,5 @@ app.get('/api/spotify-data', async (req, res) => {
 // Este bloco inicia o servidor
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
+
 });

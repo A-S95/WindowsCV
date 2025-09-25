@@ -277,7 +277,7 @@ async function getSpotifyData() {
 
     try {
         // Agora, o teu site faz um pedido ao teu próprio servidor
-        const response = await fetch('http://localhost:3000/api/spotify-data');
+        const response = await fetch('/api/spotify-data');
         const data = await response.json();
 
         // O resto do código é o mesmo, mas agora os dados vêm do teu servidor
@@ -359,4 +359,5 @@ function confirmTurnOff() {
             window.top.close();
         }
     }, 5000);
+
 }
